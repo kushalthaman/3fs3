@@ -1,0 +1,21 @@
+image:
+  repository: 3fs3
+  tag: dev
+  pullPolicy: IfNotPresent
+
+service:
+  port: 9000
+
+clusterId: stage
+mgmtdAddresses: "RDMA://192.168.1.1:8000"
+mountpoint: "/var/lib/3fs/mnt/stage"
+
+s3:
+  accessKey: ""
+  secretKey: ""
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+

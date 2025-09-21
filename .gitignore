@@ -1,0 +1,14 @@
+target/
+**/*.rs.bk
+**/*.swp
+**/.DS_Store
+Cargo.lock
+dist/
+.vscode/
+.idea/
+*.iml
+coverage/
+/.fleet/
+/.env
+/.env.local
+

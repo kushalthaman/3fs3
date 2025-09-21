@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "threefs-s3-gateway.fullname" . }}
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: {{ include "threefs-s3-gateway.name" . }}
+  ports:
+  - port: {{ .Values.service.port }}
+    targetPort: http
+    name: http
+

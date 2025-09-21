@@ -1,0 +1,49 @@
+[package]
+name = "threefs-gateway"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[features]
+default = []
+usrbio = []
+
+[dependencies]
+axum = { workspace = true }
+tokio = { workspace = true }
+hyper = { workspace = true }
+http = { workspace = true }
+bytes = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+quick-xml = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+md5 = { workspace = true }
+sha2 = { workspace = true }
+hmac = { workspace = true }
+base64 = { workspace = true }
+hex = { workspace = true }
+percent-encoding = { workspace = true }
+mime = { workspace = true }
+mime_guess = { workspace = true }
+fs-err = { workspace = true }
+tokio-util = { workspace = true }
+futures = { workspace = true }
+prometheus = { workspace = true }
+once_cell = { workspace = true }
+uuid = { workspace = true }
+rand = { workspace = true }
+regex = { workspace = true }
+time = { workspace = true }
+chrono = { workspace = true }
+rustix = { workspace = true }
+parking_lot = { workspace = true }
+dashmap = { workspace = true }
+walkdir = "2"
+form_urlencoded = "1"
+

@@ -1,0 +1,13 @@
+[package]
+name = "threefs-s3-gateway"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+threefs-gateway = { path = "../../crates/gateway" }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+anyhow = { workspace = true }
+tokio = { workspace = true }
+

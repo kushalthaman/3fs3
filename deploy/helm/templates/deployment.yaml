@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ include "threefs-s3-gateway.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "threefs-s3-gateway.name" . }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "threefs-s3-gateway.name" . }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "threefs-s3-gateway.name" . }}
+    spec:
+      hostPID: true
+      containers:
+      - name: gateway
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["SYS_ADMIN"]
+        env:
+        - name: CLUSTER_ID
+          value: "{{ .Values.clusterId }}"
+        - name: MOUNTPOINT
+          value: "{{ .Values.mountpoint }}"
+        - name: MgmtdAddresses
+          value: "{{ .Values.mgmtdAddresses }}"
+        - name: ACCESS_KEY
+          value: "{{ .Values.s3.accessKey }}"
+        - name: SECRET_KEY
+          value: "{{ .Values.s3.secretKey }}"
+        ports:
+        - name: http
+          containerPort: {{ .Values.service.port }}
+        volumeMounts:
+        - name: dev-fuse
+          mountPath: /dev/fuse
+        - name: var-lib-3fs
+          mountPath: /var/lib/3fs
+          mountPropagation: Bidirectional
+      volumes:
+      - name: dev-fuse
+        hostPath:
+          path: /dev/fuse
+          type: CharDevice
+      - name: var-lib-3fs
+        hostPath:
+          path: /var/lib/3fs
+          type: DirectoryOrCreate
+
